@@ -36,7 +36,7 @@
         </tbody>
     </table>
     <div>
-        <a class="button" href="/add-todo">Add</a>
+        <a type="button" class="btn btn-primary" href="/add-todo">Add</a>
     </div>
 </div>
 
