@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class TodoService {
-	private static final List<Todo> todos = new ArrayList<Todo>();
+	private static final List<Todo> todos = new ArrayList<>();
 	private static int todoCount = 3;
 
 	static {
@@ -21,12 +21,25 @@ public class TodoService {
 	}
 
 	public List<Todo> retrieveTodos(String user) {
-		List<Todo> filteredTodos = new ArrayList<Todo>();
+		List<Todo> filteredTodos = new ArrayList<>();
 		for (Todo todo : todos) {
 			if (todo.getUser().equals(user))
 				filteredTodos.add(todo);
 		}
 		return filteredTodos;
+	}
+
+	public Todo retrieveTodo(int id) {
+		for (Todo todo : todos) {
+			if (todo.getId() == id)
+				return todo;
+		}
+		return null;
+	}
+
+	public void updateTodo(Todo todo) {
+		todos.remove(todo);
+		todos.add(todo);
 	}
 
 	public void addTodo(String name, String desc, Date targetDate, boolean isDone) {

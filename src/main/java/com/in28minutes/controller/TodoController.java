@@ -30,10 +30,10 @@ public class TodoController {
     }
 
     @RequestMapping(value = "/add-todo", method = RequestMethod.GET)
-	public String showAddTodoPage(ModelMap model) {
-		model.addAttribute("todo", new Todo());
-		return "todo";
-	}
+    public String showAddTodoPage(ModelMap model) {
+        model.addAttribute("todo", new Todo());
+        return "todo";
+    }
 
     @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
     public String addTodo(ModelMap model, @Valid Todo todo, BindingResult result) {
@@ -43,6 +43,26 @@ public class TodoController {
 
         service.addTodo((String) model.get("name"), todo.getDesc(), new Date(),
                 false);
+        model.clear();
+        return "redirect:/list-todos";
+    }
+
+    @RequestMapping(value = "/update-todo", method = RequestMethod.GET)
+    public String showUpdateTodoPage(ModelMap model, @RequestParam int id) {
+        model.addAttribute("todo", service.retrieveTodo(id));
+        return "todo";
+    }
+
+    @RequestMapping(value = "/update-todo", method = RequestMethod.POST)
+    public String updateTodo(ModelMap model, @Valid Todo todo,
+                             BindingResult result) {
+        if (result.hasErrors())
+            return "todo";
+
+        todo.setUser("in28Minutes"); //TODO:Remove Hardcoding Later
+        todo.setTargetDate(new Date());
+        service.updateTodo(todo);
+
         model.clear();
         return "redirect:/list-todos";
     }
