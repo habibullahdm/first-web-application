@@ -4,6 +4,6 @@
     <title>Yahoo!!</title>
 </head>
 <body>
-Welcome ${name}
+Welcome ${name}.
 </body>
 </html>
