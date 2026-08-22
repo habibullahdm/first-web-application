@@ -1,3 +1,4 @@
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
     <title>Your Todo</title>
@@ -7,15 +8,17 @@
 <body>
 
 <div class="container">
-    <form action="/add-todo" method="post">
+    <%--@elvariable id="todo" type=""--%>
+    <form:form method="post" modelAttribute="todo">
         <fieldset class="form-group">
-            <label>Description</label>
-            <label>
-                <input name="desc" type="text" class="form-control" required="required"/>
-            </label>
+            <form:label path="desc">Description</form:label>
+            <form:input path="desc" type="text" class="form-control"
+                        required="required"/>
+            <form:errors path="desc" cssClass="text-warning"/>
+
         </fieldset>
         <button type="submit" class="btn btn-primary">Add</button>
-    </form>
+    </form:form>
 </div>
 
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>

@@ -1,7 +1,7 @@
 <%--@elvariable id="errorMessage" type=""--%>
 <html>
 <head>
-    <title>Yahoo!!</title>
+    <title>Login Page</title>
 </head>
 <body>
 <p><font color="red">${errorMessage}</font></p>
