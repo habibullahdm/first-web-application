@@ -5,7 +5,7 @@
 <body>
 <form action="/login.do" method="POST">
     Name : <label>
-    <input type="text"/>
+    <input name="name" type="text"/>
 </label> <input type="submit"/>
 </form>
 </body>
