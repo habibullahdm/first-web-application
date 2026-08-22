@@ -1,4 +1,4 @@
-package com.in28minutes.todo.service;
+package com.in28minutes.service;
 
 import com.in28minutes.model.Todo;
 import org.springframework.stereotype.Service;

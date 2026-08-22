@@ -1,5 +1,6 @@
-package com.in28minutes.login;
+package com.in28minutes.controller;
 
+import com.in28minutes.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
