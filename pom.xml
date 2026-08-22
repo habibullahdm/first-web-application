@@ -48,6 +48,7 @@
                     <target>17</target>
                     <verbose>true</verbose>
                     <showWarnings>true</showWarnings>
+                    <parameters>true</parameters>
                 </configuration>
             </plugin>
         </plugins>
