@@ -5,6 +5,6 @@
     <title>Yahoo!!</title>
 </head>
 <body>
-Welcome ${name}. You entered ${password}
+Welcome ${name}. You are now authenticated.
 </body>
 </html>
