@@ -1,11 +1,12 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
 <%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
 <html>
 <head>
-<title>Todos Application</title>
-<link href="webjars/bootstrap/5.3.8/css/bootstrap.min.css"
-	rel="stylesheet">
+    <title>Todos Application</title>
+    <link href="webjars/bootstrap/5.3.8/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
 
 <body>

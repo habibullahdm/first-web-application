@@ -3,7 +3,7 @@
 <%@ include file="common/navigation.jspf" %>
 <div class="container mt-4">
     <table class="table table-striped">
-        <caption align="top">Your Todos are</caption>
+        <caption align="top"><spring:message code="todo.caption" /></caption>
         <thead>
         <tr>
             <th>Description</th>
