@@ -16,7 +16,12 @@
             <form:input path="desc" type="text" class="form-control"
                         required="required"/>
             <form:errors path="desc" cssClass="text-warning"/>
-
+        </fieldset>
+        <fieldset class="form-group">
+            <form:label path="targetDate">Target Date</form:label>
+            <form:input path="targetDate" type="text" class="form-control"
+                        required="required"/>
+            <form:errors path="targetDate" cssClass="text-warning"/>
         </fieldset>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form:form>
@@ -24,6 +29,14 @@
 
 <script src="webjars/jquery/3.7.1/jquery.min.js"></script>
 <script src="webjars/bootstrap/5.3.8/js/bootstrap.min.js"></script>
+<script
+        src="webjars/bootstrap-datepicker/1.10.1/js/bootstrap-datepicker.js"></script>
+
+<script>
+    $('#targetDate').datepicker({
+        format: 'dd/mm/yyyy'
+    });
+</script>
 
 </body>
 </html>
