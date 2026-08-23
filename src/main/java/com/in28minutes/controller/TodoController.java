@@ -27,11 +27,11 @@ public class TodoController {
     private TodoService service;
 
     @InitBinder
-	protected void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				dateFormat, false));
-	}
+    protected void initBinder(WebDataBinder binder) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(
+                dateFormat, false));
+    }
 
     @RequestMapping(value = "/list-todos", method = RequestMethod.GET)
     public String showLoginPage(ModelMap model) {
@@ -52,11 +52,14 @@ public class TodoController {
         if (result.hasErrors())
             return "todo";
 
-        var date = todo.getTargetDate() != null ? todo.getTargetDate() : new Date();
-        service.addTodo((String) model.get("name"), todo.getDesc(), date,
-                false);
+        service.addTodo(getLoggedInUserName(model), todo.getDesc(),
+                todo.getTargetDate(), false);
         model.clear();
         return "redirect:/list-todos";
+    }
+
+    private String getLoggedInUserName(ModelMap model) {
+        return (String) model.get("name");
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.GET)
@@ -71,7 +74,7 @@ public class TodoController {
         if (result.hasErrors())
             return "todo";
 
-        todo.setUser("in28Minutes"); //TODO:Remove Hardcoding Later
+        todo.setUser(getLoggedInUserName(model));
         service.updateTodo(todo);
 
         model.clear();
