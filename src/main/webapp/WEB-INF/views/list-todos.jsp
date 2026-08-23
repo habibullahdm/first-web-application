@@ -1,7 +1,7 @@
 <%--@elvariable id="todos" type=""--%>
 <%@ include file="common/header.jspf" %>
 <%@ include file="common/navigation.jspf" %>
-<div class="container">
+<div class="container mt-4">
     <table class="table table-striped">
         <caption align="top">Your Todos are</caption>
         <thead>
@@ -20,18 +20,18 @@
                                     value="${todo.targetDate}"/></td>
                 <td>${todo.done}</td>
                 <td>
-                    <a type="button" class="btn btn-warning"
-                       href="/update-todo?id=${todo.id}">Edit</a>
+                    <a role="button" class="btn btn-warning btn-sm"
+                       href="/update-todo?id=${todo.id}">Update</a>
 
-                    <a type="button" class="btn btn-danger"
+                    <a role="button" class="btn btn-danger btn-sm"
                        href="/delete-todo?id=${todo.id}">Delete</a>
                 </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <div>
-        <a type="button" class="btn btn-primary" href="/add-todo">Add</a>
+    <div class="mt-3">
+        <a role="button" class="btn btn-primary" href="/add-todo">Add</a>
     </div>
 </div>
 <%@ include file="common/footer.jspf" %>
