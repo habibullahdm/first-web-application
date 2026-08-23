@@ -1,42 +1,27 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<html>
-<head>
-    <title>Your Todo</title>
-    <link href="webjars/bootstrap/5.3.8/css/bootstrap.min.css"
-          rel="stylesheet">
-</head>
-<body>
-
-<div class="container">
-    <%--@elvariable id="todo" type=""--%>
+<%@ include file="common/header.jspf"%>
+<%@ include file="common/navigation.jspf"%>
+<div class="container mt-4">
     <form:form method="post" modelAttribute="todo">
-        <form:hidden path="id"/>
-        <fieldset class="form-group">
-            <form:label path="desc">Description</form:label>
-            <form:input path="desc" type="text" class="form-control"
-                        required="required"/>
-            <form:errors path="desc" cssClass="text-warning"/>
-        </fieldset>
-        <fieldset class="form-group">
-            <form:label path="targetDate">Target Date</form:label>
-            <form:input path="targetDate" type="text" class="form-control"
-                        required="required"/>
-            <form:errors path="targetDate" cssClass="text-warning"/>
-        </fieldset>
-        <button type="submit" class="btn btn-primary">Submit</button>
+       <form:hidden path="id" />
+       <div class="mb-3">
+          <form:label path="desc" cssClass="form-label">Description</form:label>
+          <form:input path="desc" type="text" cssClass="form-control"
+             required="required" />
+          <form:errors path="desc" cssClass="text-warning" />
+       </div>
+       <div class="mb-3">
+          <form:label path="targetDate" cssClass="form-label">Target Date</form:label>
+          <form:input path="targetDate" type="text" cssClass="form-control"
+             required="required" />
+          <form:errors path="targetDate" cssClass="text-warning" />
+       </div>
+       <button type="submit" class="btn btn-success">Submit</button>
     </form:form>
 </div>
-
-<script src="webjars/jquery/3.7.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/5.3.8/js/bootstrap.min.js"></script>
-<script
-        src="webjars/bootstrap-datepicker/1.10.1/js/bootstrap-datepicker.js"></script>
+<%@ include file="common/footer.jspf"%>
 
 <script>
     $('#targetDate').datepicker({
-        format: 'dd/mm/yyyy'
+       format : 'dd/mm/yyyy'
     });
 </script>
-
-</body>
-</html>

@@ -1,18 +1,9 @@
 <%--@elvariable id="todos" type=""--%>
-<%--@elvariable id="name" type=""--%>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-<%@ taglib uri="jakarta.tags.fmt" prefix="fmt" %>
-<html>
-<head>
-    <title>Todos for ${name}</title>
-    <link href="webjars/bootstrap/5.3.8/css/bootstrap.min.css"
-          rel="stylesheet">
-</head>
-<body>
+<%@ include file="common/header.jspf" %>
+<%@ include file="common/navigation.jspf" %>
 <div class="container">
     <table class="table table-striped">
         <caption align="top">Your Todos are</caption>
-
         <thead>
         <tr>
             <th>Description</th>
@@ -21,7 +12,6 @@
             <th>Action</th>
         </tr>
         </thead>
-
         <tbody>
         <c:forEach items="${todos}" var="todo">
             <tr>
@@ -44,8 +34,4 @@
         <a type="button" class="btn btn-primary" href="/add-todo">Add</a>
     </div>
 </div>
-
-<script src="webjars/jquery/3.7.1/jquery.min.js"></script>
-<script src="webjars/bootstrap/5.3.8/js/bootstrap.min.js"></script>
-</body>
-</html>
+<%@ include file="common/footer.jspf" %>
