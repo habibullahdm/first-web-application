@@ -1,23 +1,21 @@
 package com.in28minutes.controller;
 
-import com.in28minutes.service.LoginService;
+import com.in28minutes.service.UsernameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
-@SessionAttributes("name")
-public class LoginController {
+public class WelcomeController {
 
 	@Autowired
-	private LoginService loginService;
+	private UsernameService usernameService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String showWelcomePage(ModelMap model) {
-		model.put("name", "in28Minutes");
+		model.put("name", usernameService.getLoggedInUserName());
 		return "welcome";
 	}
 }

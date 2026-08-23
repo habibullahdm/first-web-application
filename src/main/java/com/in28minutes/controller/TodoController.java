@@ -1,6 +1,8 @@
 package com.in28minutes.controller;
 
 import com.in28minutes.model.Todo;
+import com.in28minutes.service.TodoService;
+import com.in28minutes.service.UsernameService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -12,19 +14,18 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.in28minutes.service.TodoService;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Controller
-@SessionAttributes("name")
 public class TodoController {
 
     @Autowired
     private TodoService service;
+
+    @Autowired
+    private UsernameService usernameService;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -35,7 +36,7 @@ public class TodoController {
 
     @RequestMapping(value = "/list-todos", method = RequestMethod.GET)
     public String showLoginPage(ModelMap model) {
-        String user = (String) model.get("name");
+        String user = usernameService.getLoggedInUserName();
         model.addAttribute("todos", service.retrieveTodos(user));
         return "list-todos";
     }
@@ -52,14 +53,10 @@ public class TodoController {
         if (result.hasErrors())
             return "todo";
 
-        service.addTodo(getLoggedInUserName(model), todo.getDesc(),
+        service.addTodo(usernameService.getLoggedInUserName(), todo.getDesc(),
                 todo.getTargetDate(), false);
         model.clear();
         return "redirect:/list-todos";
-    }
-
-    private String getLoggedInUserName(ModelMap model) {
-        return (String) model.get("name");
     }
 
     @RequestMapping(value = "/update-todo", method = RequestMethod.GET)
@@ -74,7 +71,7 @@ public class TodoController {
         if (result.hasErrors())
             return "todo";
 
-        todo.setUser(getLoggedInUserName(model));
+        todo.setUser(usernameService.getLoggedInUserName());
         service.updateTodo(todo);
 
         model.clear();
